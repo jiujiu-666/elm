@@ -1,6 +1,3 @@
-
-//QQ频道【tl库】：https://pd.qq.com/s/btv4bw7av
-
 'use strict';
 
 const got = require('got');
@@ -16,7 +13,6 @@ if (Fileexists)
   authFile="/ql/data/config/auth.json"
 else
   authFile="/ql/config/auth.json"
-//const authFile = path.join(qlDir, 'config/auth.json');
 
 const api = got.extend({
   prefixUrl: 'http://127.0.0.1:5600',
