@@ -1,15 +1,17 @@
 /**
  * @jiujiu
  * 变量：elmck: 必填，账号cookie
- * cron: 36 0,8,10,14,18,22 * * *
- * 依赖：moment md5
+ * cron:  0 5 5 * * *
+ * 
  */
 
+
 const $ = new Env('饿了么福尔魔方');
+
 const {
     validateCarmeWithType: _0x4cfa40,
     getCookies: _0x313a08,
-    getUserInfoWithX: _0x4a4a5b,
+    //getUserInfoWithX: _0x4a4a5b,
     wait: _0x5ad5ca,
     commonRequest: _0x5f380f,
     getCoordinates,
@@ -32,8 +34,8 @@ async function h5Req(_0x435d5d, _0x5231fc) {
       pragma: "no-cache",
       referer: "https://r.ele.me/linkgame/index.html?navType=3&spm-pre=a2ogi.13162730.zebra-ele-login-module-9089118186&spm=a13.b_activity_kb_m71293.0.0",
       cookie: _0x435d5d,
-      "x-ele-ua": "RenderWay/H5 AppName/wap Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36",
-      "user-agent": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36"
+//      "x-ele-ua": "RenderWay/H5 AppName/wap Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36",
+//      "user-agent": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36"
     },
     _0x395caf = new Date().getTime(),
     _0xc3123 = 12574478;
@@ -82,26 +84,26 @@ async function initEnv(_0x22eacf, _0x47cef2, _0x48ccf4) {
 }
 async function _0x109797(_0x59c2bc, _0x44a872) {
   const _0x182bf2 = new Date().getTime(),
-    {
-      latitude: _0x43c809,
-      longitude: _0x3192bc
-    } = await getCoordinates(),
-    {
-      UA: _0x1f9588,
-      umidtoken: _0x2ce074
-    } = await initEnv("", _0x43c809, _0x3192bc),
+    // //{
+    //   latitude: _0x43c809,
+    //   longitude: _0x3192bc
+    // } = await getCoordinates(),
+    // {
+    //   UA: _0x1f9588,
+    //   umidtoken: _0x2ce074
+    // } = await initEnv("", _0x43c809, _0x3192bc),
     _0x401a77 = {
       bizScene: "MAGIC_CUBE",
-      latitude: _0x43c809,
-      longitude: _0x3192bc,
+      //latitude: _0x43c809,
+      //longitude: _0x3192bc,
       bizCode: "MAGIC_CUBE",
       actId: "20230802212526123181213864",
       collectionId: "20230802212526148986536967",
       componentId: "20230803112141370370827352",
       extParams: "{\\\"actId\\\":\\\"20230802212526123181213864\\\",\\\"bizScene\\\":\\\"MAGIC_CUBE\\\",\\\"desc\\\":\\\"魔方消消乐\\\"}",
       requestId: "20230802212526123181213864" + _0x182bf2 + "",
-      ua: _0x1f9588,
-      umidToken: _0x2ce074,
+      //ua: _0x1f9588,
+      //umidToken: _0x2ce074,
       asac: "2A22C0239QW1FOL3UUQY7U"
     };
   try {
@@ -123,15 +125,13 @@ async function _0x12d072() {
   const _0x1b7a0a = _0x313a08("elmck");
   for (let _0x5c83c6 = 0; _0x5c83c6 < _0x1b7a0a.length; _0x5c83c6++) {
     let _0x24b3c4 = _0x1b7a0a[_0x5c83c6],
-      _0x2dd844 = await _0x4a4a5b(_0x24b3c4, _0x1c5d9a),
+      //_0x2dd844 = await _0x4a4a5b(_0x24b3c4, _0x1c5d9a),
       _0x460a66 = await checkCk(_0x24b3c4, _0x5c83c6, process.env.ELE_CARME);
-    if (!_0x2dd844 || !_0x2dd844.userName) {
-      continue;
-    }
-    const _0x324e0d = _0x2dd844.localId;
-    let _0x5e3540 = _0x2dd844.encryptMobile;
-    console.log("\n****** #" + (_0x5c83c6 + 1), _0x5e3540, "*********");
-    console.log("账号的 id 为", _0x324e0d);
+
+    
+
+   
+    
     await _0x109797(_0x460a66);
     console.log("防止挤爆了，延时 1 秒");
     await _0x5ad5ca(1);
@@ -176,7 +176,7 @@ function Env(t, e) {
       this.logSeparator = "\n";
       this.startTime = new Date().getTime();
       Object.assign(this, e);
-      this.log("", `🔔${this.name}, 开始!`);
+      this.log("", `??${this.name}, 开始!`);
     }
     isNode() {
       return "undefined" != typeof module && !!module.exports;
@@ -512,7 +512,7 @@ function Env(t, e) {
         }
       };
       if (this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(e, s, i, o(r)) : this.isQuanX() && $notify(e, s, i, o(r))), !this.isMuteLog) {
-        let t = ["", "==============📣系统通知📣=============="];
+        let t = ["", "==============??系统通知??=============="];
         t.push(e);
         s && t.push(s);
         i && t.push(i);
@@ -526,7 +526,7 @@ function Env(t, e) {
     }
     logErr(t, e) {
       const s = !this.isSurge() && !this.isQuanX() && !this.isLoon();
-      s ? this.log("", `❗️${this.name}, 错误!`, t.stack) : this.log("", `❗️${this.name}, 错误!`, t);
+      s ? this.log("", `??${this.name}, 错误!`, t.stack) : this.log("", `??${this.name}, 错误!`, t);
     }
     wait(t) {
       return new Promise(e => setTimeout(e, t));
@@ -534,7 +534,7 @@ function Env(t, e) {
     done(t = {}) {
       const e = new Date().getTime(),
         s = (e - this.startTime) / 1000;
-      this.log("", `🔔${this.name}, 结束! 🕛 ${s} 秒`);
+      this.log("", `??${this.name}, 结束! ?? ${s} 秒`);
       this.log();
       (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(t);
     }
