@@ -5,79 +5,128 @@
  */
 
 const $ = new Env('饿了么特级厨师');
-
 const {
-    validateCarmeWithType: _0x30a8a3,
-    commonRequest: _0x46161b,
-    getCookies: _0x210594,
-    getUserInfoWithX: _0x152c2f,
-    wait: _0x1a2f0c,
-    getCoordinates
-  } = require("./common.js"),
-  _0x20a517 = process.env.ELE_CARME,
-  _0x2bec0b = 3;
-function _0x40ab69(_0x403f82) {
-  return Object.values(_0x403f82).length === 0;
+  sign,
+  getToken,
+  checkCk,
+  getCookies,
+  getUserInfo,
+  validateCarmeWithType,
+  wait,
+  checkCarmeCount,
+  tryCatchPromise
+} = require("./common.js");
+const request = require("request");
+const GAME_TYEP = 3;
+const kami = process.env.ELE_CARME;
+function isEmpty(_0xa5a90d) {
+  return Object.values(_0xa5a90d).length === 0;
 }
-async function _0x154fb2(_0x4e0ae7, _0x1a1aac, _0x1037cb, _0xfadcbd) {
-  const _0x5a2323 = {
+async function lottery(_0x49561f) {
+  var _0x5f47dd = {
+    authority: "shopping.ele.me",
+    accept: "application/json",
+    "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+    "cache-control": "no-cache",
+    "content-type": "application/x-www-form-urlencoded",
+    origin: "https://r.ele.me",
+    pragma: "no-cache",
+    referer: "https://r.ele.me/linkgame/index.html?navType=3&spm-pre=a2ogi.13162730.zebra-ele-login-module-9089118186&spm=a13.b_activity_kb_m71293.0.0",
+    cookie: _0x49561f,
+    //"x-ele-ua": "RenderWay/H5 AppName/wap Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36",
+    //"user-agent": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36"
+  };
+  const _0x10b83a = {
     bizScene: "XIAODANGJIA",
     actId: "20230117134129770153614517",
     uniqueId: "",
-    latitude: _0x1037cb,
-    longitude: _0xfadcbd,
+    latitude: "30.17862595617771",
+    longitude: "120.22057268768549",
     cityId: "2",
     bizCode: "XIAODANGJIA",
     collectionId: "20230421102945045949799658",
     componentId: "20230505143809276394718532",
-    extParams: "{\\\"actId\\\":\\\"20230117134129770153614517\\\",\\\"bizScene\\\":\\\"XIAODANGJIA\\\",\\\"desc\\\":\\\"玩特级厨师挑战赛\\\"}",
+    extParams: "{\"actId\":\"20230117134129770153614517\",\"bizScene\":\"XIAODANGJIA\",\"desc\":\"玩特级厨师挑战赛\"}",
+    ua: "140#j5ux7ZvyzzWqwzo2+i+F4pN8s77dltkRQIO3QRil+Yn3wcq3bj90JrqHYHVu9Ajc4Qvzlp1zzqQUiL53Wzzx0Hw+93h/zzrb22U3lp1xzR2VV2EqlaOz2PD+VoS3xg8I1wba7X53xl82VUpji2Jpo20oiliCyZZMhx+aFhb3z6xBKJUo6ditqgIJzlXBvo3zHy952ETFQJJ4VtMblt1Rg5dK6cwi1gpgsO7bpU9tqcFbbrZp9GOwTNb6uzawxcYW4weLSQ7XJ4U/7LoSok/s/uEuOXtCCid22sUl01a8LcZBfGCH6TGTK9FPDON0BmAQHTTD+kOWs6V2AeXWJL+HZV2gXyt8W/N3T0xxs6+UHgah+Nthuf7mpQA0EEWZKpsQE4L+3F8co053zVawEqeNYdbiWEq9WRB+zTujE9bIpoJ4qA1MfJL091GI3KYCkeCxM9kuyjSpGexyNgSyYn57lvmiHroxcAuezPdEyElpAx4VHDwmWr0qKJHCt/YydEwWqyqoDhL394UXSjVCTBxEztWKF6wVtONnwT1T78KhjVKKmz/QHqzdCgyAGmhu+UY87Q3ah4C+yCkFLT/KS+i2gmBtA8k6cBYjjWEZvIXP+yYdk1w8zuJRP606RBHGrVkzJ3hv6g1G8rIJquUAWFE+v+eVlWJJUXTSv06yBe2jfe0Wu3cGnF==",
+    umidToken: "defaultToken3_init_callback_not_called@@https://r.ele.me/afun-chuka-ichiban/@@1687772010930",
     asac: "2A22C0239QW1FOL3UUQY7U"
   };
-  let _0x3b644c = "mtop.koubei.interactioncenter.platform.right.lottery";
-  try {
-    const _0x4ec97d = await _0x46161b(_0x4e0ae7, JSON.stringify(_0x5a2323), _0x3b644c, _0x2bec0b, "mtop.ele.me", process.env.x5sec);
-    if (_0x40ab69(_0x4ec97d.data.data)) {
-      console.log(_0x4ec97d.ret[0]);
-      return false;
-    } else {
-      const _0x4b8af4 = _0x4ec97d.data.data.sendRightList[0].discountInfo.amount;
-      console.log("特级厨师闯关成功。获得：" + _0x4b8af4, "乐园币");
-      _0x4b8af4 && _0x4b8af4 !== 1 && (await _0x154fb2(_0x4e0ae7, _0x1a1aac, _0x1037cb, _0xfadcbd));
-      await _0x1a2f0c(1);
-      return _0x4b8af4 !== 1;
-    }
-  } catch (_0x3efe31) {
-    return false;
-  }
+  const _0x1ffd1a = new Date().getTime();
+  const _0x25ced9 = 12574478;
+  var _0xb79160 = "data=" + encodeURIComponent(JSON.stringify(_0x10b83a));
+  const _0x49cff8 = getToken(_0x49561f),
+    _0x507372 = _0x49cff8.split("_")[0];
+  const _0x1776c6 = await sign(_0x507372 + "&" + _0x1ffd1a + "&" + _0x25ced9 + "&" + JSON.stringify(_0x10b83a), kami);
+  var _0x110807 = {
+    url: "https://shopping.ele.me/h5/mtop.koubei.interactioncenter.platform.right.lottery/1.0/?jsv=2.6.1&appKey=12574478&t=" + _0x1ffd1a + "&sign=" + _0x1776c6 + "&api=mtop.koubei.interactioncenter.platform.right.lottery&v=1.0&type=originaljson&dataType=json",
+    method: "POST",
+    headers: _0x5f47dd,
+    body: _0xb79160
+  };
+  return tryCatchPromise(_0x1d0c9f => {
+    request(_0x110807, async (_0x233414, _0x5f2660, _0x1714f1) => {
+      if (!_0x233414 && _0x5f2660.statusCode == 200) {
+        try {
+          const _0xca907a = JSON.parse(_0x1714f1);
+          if (isEmpty(_0xca907a.data.data)) {
+            console.log(_0xca907a.ret[0]);
+            _0x1d0c9f(false);
+          } else {
+            const _0x1709f8 = _0xca907a.data.data.sendRightList[0].discountInfo.amount;
+            console.log("特级厨师闯关成功。获得：" + _0x1709f8, "乐园币");
+            if (_0x1709f8 == 1) {
+              _0x1d0c9f(false);
+            } else {
+              _0x1d0c9f(true);
+            }
+          }
+        } catch (_0x3750a0) {
+          _0x1d0c9f(false);
+        }
+      } else {
+        _0x1d0c9f(false);
+      }
+    });
+  });
 }
-async function _0x3ca360() {
-  await _0x30a8a3(_0x20a517, 1);
-  const _0x26db4f = _0x210594("elmck"),
-    {
-      latitude: _0x386378,
-      longitude: _0x43eb6b
-    } = await getCoordinates();
-  for (let _0xdbcbdb = 0; _0xdbcbdb < _0x26db4f.length; _0xdbcbdb++) {
-    let _0x275692 = _0x26db4f[_0xdbcbdb],
-      _0x11e529 = await _0x152c2f(_0x275692, _0x2bec0b);
-    if (_0x11e529 && _0x11e529[0]) {
-      console.log("第", _0xdbcbdb + 1, "账号失效！请重新登录！！！😭");
+async function start() {
+  await validateCarmeWithType(kami, 1);
+  const _0x3433f4 = getCookies();
+  // 遍历所有cookies
+  for (let _0x192829 = 0; _0x192829 < _0x3433f4.length; _0x192829++) {
+    const _0x352a5f = _0x3433f4[_0x192829];
+    if (!_0x352a5f) {
+      console.log(" ❌无效用户信息, 请重新获取ck");
       continue;
     }
-    if (!_0x11e529 || !_0x11e529.userName) {
-      continue;
+    for (let i = 0; i < 11; i++) { // 对每个账号执行11次操作
+      try {
+        let _0x14288b = await checkCk(_0x352a5f, _0x192829);
+        if (!_0x14288b) {
+          console.log("CK失效，跳过账号");
+          break;
+        }
+        let _0x4d732e = await getUserInfo(_0x14288b);
+        if (!_0x4d732e.username) {
+          console.log("第", _0x192829 + 1, "账号失效！请重新登录！！！😭");
+          break;
+        }
+        const _0x39969d = _0x4d732e.user_id;
+        await checkCarmeCount(kami, _0x39969d, GAME_TYEP);
+        console.log("******开始【饿了么账号", _0x192829 + 1, "】", "第", i + 1, "次操作*********");
+        var _0x120fe1 = await lottery(_0x14288b);
+        console.log("延时 5 秒");
+        await wait(5);
+      } catch (_0x2dcd3d) {
+        console.log(_0x2dcd3d);
+      }
     }
-    const _0x49c1ba = _0x11e529.localId;
-    let _0x54bf25 = _0x11e529.encryptMobile;
-    console.log("\n****** #" + (_0xdbcbdb + 1), _0x54bf25, "*********");
-    console.log("账号的 id 为", _0x49c1ba);
-    await _0x154fb2(_0x275692, "", _0x386378, _0x43eb6b);
-    console.log("防止挤爆了，延时 1 秒");
-    await _0x1a2f0c(1);
   }
   process.exit(0);
 }
-_0x3ca360();
+
+start();
+
 function Env(t, e) {
   "undefined" != typeof process && JSON.stringify(process.env).indexOf("GITHUB") > -1 && process.exit(0);
   class s {
